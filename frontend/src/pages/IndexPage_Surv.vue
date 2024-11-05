@@ -3,43 +3,38 @@
     <div class="row justify-center">
       <q-card v-if="!showResults" class="q-pa-md column justify-center" flat bordered>
 
-        <q-tabs v-model="mode" dense class="text-grey-7" active-color="indigo-10" indicator-color="deep-orange-8" align="justify">
-          <q-tab name="early recurrence" label="Early recurrence" />
-          <q-tab name="overall survival" label="Overall survival" />
+        <q-tabs v-model="mode" dense class="text-grey-7 custom-tabs" active-color="indigo-10" indicator-color="deep-orange-8" align="justify">
+          <q-tab name="case" label="Overall Survival (Case)" />
+          <q-tab name="batch" label="Overall Survival (Batch)" />
         </q-tabs>
 
         <q-tab-panels v-model="mode" animated>
-          <q-tab-panel name="early recurrence">
-            <CaseForm_ER @formSubmitted="(data) => handleFormSubmission('early recurrence', data)" />
-          </q-tab-panel>
-          <q-tab-panel name="overall survival">
+          <q-tab-panel name="case">
             <CaseForm_Surv @formSubmitted="(data) => handleFormSubmission('overall survival', data)" />
+          </q-tab-panel>
+          <q-tab-panel name="batch">
+            <BatchForm_Surv />
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
 
       <div v-if="showResults" class="flex-container full-width">
-        <div class="col" align="center">
-          <q-tabs v-model="mode" dense class="text-grey-7" active-color="indigo-10" indicator-color="deep-orange-8" align="justify">
-            <q-tab name="early recurrence" label="Early recurrence" />
-            <q-tab name="overall survival" label="Overall survival" />
+        <div class="col form-container" align="center">
+          <q-tabs v-model="mode" dense class="text-grey-7 custom-tabs" active-color="indigo-10" indicator-color="deep-orange-8" align="justify">
+            <q-tab name="case" label="Overall Survival (Case)" />
+            <q-tab name="batch" label="Overall Survival (Batch)" />
           </q-tabs>
 
           <q-tab-panels v-model="mode" animated>
-            <q-tab-panel name="early recurrence">
-              <CaseForm_ER class="form-part" :initial-values="formValues" @formSubmitted="(data) => handleFormSubmission('early recurrence', data)" />
-            </q-tab-panel>
-            <q-tab-panel name="overall survival">
+            <q-tab-panel name="case">
               <CaseForm_Surv class="form-part" :initial-values="formValues" @formSubmitted="(data) => handleFormSubmission('overall survival', data)" />
+            </q-tab-panel>
+            <q-tab-panel name="batch">
+              <BatchForm_Surv />
             </q-tab-panel>
           </q-tab-panels>
         </div>
-        <template v-if="resultMode === 'early recurrence'">
-          <CaseResultPage_ER class="result-part" />
-        </template>
-        <template v-else-if="resultMode === 'overall survival'">
-          <CaseResultPage_Surv class="result-part" />
-        </template>
+        <CaseResultPage_Surv class="result-part" />
       </div>
     </div>
   </q-page>
@@ -47,22 +42,19 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-import CaseForm_ER from "src/components/CaseForm_ER.vue"
 import CaseForm_Surv from 'src/components/CaseForm_Surv.vue'
-import CaseResultPage_ER from "src/pages/CaseResultPage_ER.vue"
+import BatchForm_Surv from "src/components/BatchForm_Surv.vue"
 import CaseResultPage_Surv from 'src/pages/CaseResultPage_Surv.vue'
 
 export default defineComponent({
-  name: 'IndexPage',
+  name: 'IndexPage_Surv',
   components: {
-    CaseForm_ER,
     CaseForm_Surv,
-    CaseResultPage_ER,
+    BatchForm_Surv,
     CaseResultPage_Surv
   },
   setup() {
-    const mode = ref('early recurrence')
-    const resultMode = ref('')
+    const mode = ref('case')
     const showResults = ref(false)
     const formValues = ref(null)
 
@@ -74,20 +66,29 @@ export default defineComponent({
 
       formValues.value = data.formValues;
       showResults.value = true;
-      resultMode.value = formMode;
     }
 
-    return { mode, resultMode, showResults, formValues, handleFormSubmission }
+    return { mode, showResults, formValues, handleFormSubmission }
   },
 })
 </script>
 <style>
+.custom-tabs .q-tab__label {
+  text-transform: none; /* 保持原始大小寫格式 */
+  font-size: 18px; /* 設定字體大小 */
+  font-weight: bold; /* 設定字體粗細 */
+}
+
 .flex-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
+}
+
+.form-container {
+  width: 38%; /* 调整表格部分的宽度 */
 }
 
 .form-part {
@@ -102,7 +103,7 @@ export default defineComponent({
 }
 
 .result-part {
-  width: 65%;
+  width: 62%;
   margin-right: -140px;
   margin-left: -40px;
   flex-direction: column;

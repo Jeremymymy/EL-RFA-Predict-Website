@@ -18,7 +18,7 @@
         <q-toolbar-title>
           <div class="text-caption text-center">&copy; 2024 Yang Ming Chiao Tung University Intelligent Computation Laboratory  All rights reserved.</div>
         </q-toolbar-title>
-        
+
         <div class="footer-images ">
           <q-img
             src="../pic/北榮logo.png"
