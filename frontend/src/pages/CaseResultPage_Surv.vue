@@ -12,8 +12,6 @@
                 <th class="text-center">3</th>
                 <th class="text-center">4</th>
                 <th class="text-center">5</th>
-                <th class="text-center">6</th>
-                <th class="text-center">7</th>
               </tr>
             </thead>
             <tbody>
@@ -24,8 +22,6 @@
                 <td class="text-center">{{ formatPercentage(job_store.survival_rates[2]) }}</td>
                 <td class="text-center">{{ formatPercentage(job_store.survival_rates[3]) }}</td>
                 <td class="text-center">{{ formatPercentage(job_store.survival_rates[4]) }}</td>
-                <td class="text-center">{{ formatPercentage(job_store.survival_rates[5]) }}</td>
-                <td class="text-center">{{ formatPercentage(job_store.survival_rates[6]) }}</td>
               </tr>
             </tbody>
           </q-markup-table>
@@ -59,7 +55,7 @@ export default {
     const job_store = useJobStore_Surv()
 
     const survival_data = computed(() => ({
-      labels: ["1 year", "2 year", "3 year", "4 year", "5 year", "6 year", "7 year"],
+      labels: ["1 year", "2 year", "3 year", "4 year", "5 year"],
       datasets: [
         {
           type: "bar",

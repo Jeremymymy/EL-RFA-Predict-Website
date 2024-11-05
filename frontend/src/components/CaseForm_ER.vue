@@ -5,46 +5,39 @@
         :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
       <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.height" label="Height (cm)" />
       <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.weight" label="Weight (kg)" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.alk_p" label="ALK-P (U/L)" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.tumor_number" label="Tumor number"
+        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
     </div>
     <div class="row q-gutter-sm">
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.alt" label="ALT (U/L)"
-        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.tumor_size" label="Tumor size (cm)"
+        :rules="[ (val) => (val >= 0 && val <= 10) || 'Value must be between 0 and 10', ]" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.01" v-model="form.afp" label="AFP (ng/ml)" />
       <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.ast" label="AST (U/L)"
         :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.alb" label="Albumin (g/dL)"
-        :rules="[ (val) => (val >= 0 && val <= 10) || 'Value must be between 0 and 10', ]" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.01" v-model="form.bili" label="Bilirubin (mg/dL)"
-        :rules="[ (val) => (val >= 0 && val <= 10) || 'Value must be between 0 and 10', ]" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.alt" label="ALT (U/L)"
+        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
     </div>
     <div class="row q-gutter-sm">
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.alb" label="Albumin (g/dL)"
+        :rules="[ (val) => (val >= 0 && val <= 10) || 'Value must be between 0 and 10', ]" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.alk_p" label="ALK-P (U/L)" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.01" v-model="form.bili" label="Bilirubin (mg/dL)"
+        :rules="[ (val) => (val >= 0 && val <= 10) || 'Value must be between 0 and 10', ]" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.01" v-model="form.cr" label="Creatinine (mg/dL)" />
+    </div>
+    <div class="row q-gutter-sm">
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.wbc" label="WBC (/uL)"
+        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
       <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.plat" label="Platelet count (/uL)"
         :rules="validationEnabled ? [
           val => val >= 1000 || 'Value must be larger than 1000',
           val => Number.isInteger(Number(val)) || 'Value must be an integer' ] : []"
       />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.neutrophil" label="Neutrophil (%)" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.lymphocyte" label="Lymphocyte (%)" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.hb" label="Hemoglobin (g/dL)" />
-    </div>
-    <div class="row q-gutter-sm">
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.wbc" label="WBC (/uL)"
-        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.tumor_number" label="Tumor number"
-        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.1" v-model="form.tumor_size" label="Tumor size (cm)"
-        :rules="[ (val) => (val >= 0 && val <= 10) || 'Value must be between 0 and 10', ]" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.01" v-model="form.afp" label="AFP (ng/ml)" />
-    </div>
-    <div class="row q-gutter-sm">
       <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.01" v-model="form.ptinr" label="INR" />
-      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" step="0.01" v-model="form.cr" label="Creatinine (mg/dL)" />
+      <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.na" label="Na (mEq/L)"
+        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
     </div>
     <div class="row q-gutter-sm">
-      <div class="col-12 col-md-5 fine-tune">
-        <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.close_to_1_score" label="Number of tumor close to stomach or intestine"
-        :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
-      </div>
       <div class="col-12 col-md-5 fine-tune">
         <q-input class="custom-label-spacing" outlined color="indigo-9" type="number" v-model="form.close_to_4_score" label="Number of tumor close to blood vessel"
         :rules="[ (val) => Number.isInteger(Number(val)) || 'Value must be an integer', ]" />
@@ -52,7 +45,7 @@
     </div>
     <div class="row q-gutter-sm">
       <div class="q-pa-sm rounded-borders" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'">
-        Tumor close to Gallbladder or Hilum
+        Tumor close to stomach
         <q-option-group
           :options="[
             { label: 'No', value: 0, color: 'green' },
@@ -60,7 +53,19 @@
           ]"
           type="radio"
           inline
-          v-model="form.close_to_56"
+          v-model="form.close_to_1"
+        />
+      </div>
+      <div class="q-pa-sm rounded-borders" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'">
+        Tumor close to subcapsular, heart, kidney, or diaphragm
+        <q-option-group
+          :options="[
+            { label: 'No', value: 0, color: 'green' },
+            { label: 'Yes', value: 1, color: 'red' }
+          ]"
+          type="radio"
+          inline
+          v-model="form.close_to_2378"
         />
       </div>
       <div class="q-pa-sm rounded-borders" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'">
@@ -74,19 +79,6 @@
           type="radio"
           inline
           v-model="form.bclc"
-        />
-      </div>
-      <div class="q-pa-sm rounded-borders" :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'">
-        Child-Pugh class
-        <q-option-group
-          :options="[
-            { label: 'A', value: 1, color: 'green' },
-            { label: 'B', value: 2, color: 'orange' },
-            { label: 'C', value: 3, color: 'red' },
-          ]"
-          type="radio"
-          inline
-          v-model="form.child_class"
         />
       </div>
     </div>
@@ -125,7 +117,11 @@
     </q-dialog>
 
     <!-- 提交按钮 -->
-    <div class="row q-gutter-md justify-end">
+    <div class="row q-gutter-md justify-between">
+      <div class="col-auto">
+        <DownloadExampleButton folderName="ER_Case" />
+      </div>
+      <div class="col-auto row q-gutter-sm">
         <q-btn unelevated color="red" label="Clear" @click="promptClearForm" />
         <q-btn unelevated color="teal-6" type="button" label="Demo" @click="demo" />
         <q-btn unelevated color="teal-6" type="submit" label="Submit" :loading="submitting">
@@ -133,6 +129,7 @@
             <q-spinner-cube color="white" />
           </template>
         </q-btn>
+      </div>
     </div>
   </q-form>
 
@@ -154,9 +151,13 @@ import { Notify } from 'quasar'
 import { api } from "boot/axios"
 import { useJobStore_ER } from 'stores/job'
 import { useTestCase_ER } from '../helpers/useDemo'
+import DownloadExampleButton from './DownloadExampleButton.vue';
 
 export default defineComponent({
   name: 'CaseForm_ER',
+  components: {
+    DownloadExampleButton
+  },
   emits: ['formSubmitted'],
   props: {
     initialValues: {
@@ -174,26 +175,23 @@ export default defineComponent({
       age: null,
       height: null,
       weight: null,
-      hb: null,
-      afp: null,
-      alk_p: null,
-      cr: null,
-      neutrophil: null,
-      lymphocyte: null,
-      tumor_size: null,
       tumor_number: null,
+      tumor_size: null,
+      afp: null,
+      ast: null,
+      alt: null,
+      alb: null,
+      alk_p: null,
+      bili: null,
+      cr: null,
       wbc: null,
       plat: null,
       ptinr: null,
-      alb: null,
-      bili: null,
-      child_class: null,
-      bclc: null,
-      alt: null,
-      ast: null,
-      close_to_1_score: null,
+      na: null,
       close_to_4_score: null,
-      close_to_56: null
+      bclc: null,
+      close_to_1: null,
+      close_to_2378: null
     })
 
     const initForm = () => {

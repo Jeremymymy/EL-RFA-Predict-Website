@@ -5,52 +5,46 @@ ER_cli_features = {
     'age': 'Age',
     'height': 'Height',
     'weight': 'Weight',
-    'hb': 'HB',
-    'afp': 'AFP',
-    'alk_p': 'ALK-P',
-    'cr': 'CR',
-    'neutrophil': 'Neutrophil',
-    'lymphocyte': 'Lymphocyte',
-    'tumor_size': 'Tumor size',
     'tumor_number': 'Tumor number',
+    'tumor_size': 'Tumor size',
+    'afp': 'AFP',
+    'ast': 'AST',
+    'alt': 'ALT',
+    'alb': 'ALB',
+    'alk_p': 'ALK-P',
+    'bili': 'BILI',
+    'cr': 'CR',
     'wbc': 'WBC',
     'plat': 'PLAT',
     'ptinr': 'PTINR',
-    'alb': 'ALB',
-    'bili': 'BILI',
-    'child_class': 'Child_Class',
-    'bclc': 'BCLC',
-    'alt': 'ALT',
-    'ast': 'AST',
-    'close_to_1_score': 'close_to_1_score',
+    'na': 'Na',
     'close_to_4_score': 'close_to_4_score',
-    'close_to_56': 'close_to_56',
+    'bclc': 'BCLC',
+    'close_to_1': 'close_to_1',
+    'close_to_2378': 'close_to_2378',
 }
 
 class PatientData_ER(BaseModel):
     age: float | None = None
     height: float | None = None
     weight: float | None = None
-    hb: float | None = None
-    afp: float | None = None
-    alk_p: float | None = None
-    cr: float | None = None
-    neutrophil: float | None = None
-    lymphocyte: float | None = None
-    tumor_size: float | None = None
     tumor_number: float | None = None
+    tumor_size: float | None = None
+    afp: float | None = None
+    ast: float | None = None
+    alt: float | None = None
+    alb: float | None = None
+    alk_p: float | None = None
+    bili: float | None = None
+    cr: float | None = None
     wbc: float | None = None
     plat: float | None = None
     ptinr: float | None = None
-    alb: float | None = None
-    bili: float | None = None
-    child_class: float | None = None
-    bclc: float | None = None
-    alt: float | None = None
-    ast: float | None = None
-    close_to_1_score: float | None = None
+    na: float | None = None
     close_to_4_score: float | None = None
-    close_to_56: float | None = None
+    bclc: float | None = None
+    close_to_1: float | None = None
+    close_to_2378: float | None = None
 
     def dict(self, *args, **kwargs):
         original_dict = super().dict(*args, **kwargs)
@@ -58,53 +52,47 @@ class PatientData_ER(BaseModel):
 
 
 Surv_cli_features = {
-    'age': 'Age',
     'sex': 'Sex',
-    'hb': 'HB',
-    'bili': 'BILI',
-    'alb': 'ALB',
-    'alk_p': 'ALK-P',
-    'bun': 'BUN',
-    'bclc': 'BCLC',
-    'cr': 'CR',
-    'neutrophil': 'Neutrophil',
-    'lymphocyte': 'Lymphocyte',
-    'afp': 'AFP',
-    'alt': 'ALT',
-    'hbsag': 'HBsAg',
-    'plat': 'PLAT',
-    'wbc': 'WBC',
-    'child_class': 'Child_Class',
-    'ast': 'AST',
+    'age': 'Age',
     'height': 'Height',
     'weight': 'Weight',
-    'hcv': 'HCV',
-    'tumor_size': 'Tumor size',
+    'afp': 'AFP',
+    'ast': 'AST',
+    'alt': 'ALT',
+    'alb': 'ALB',
+    'alk_p': 'ALK-P',
+    'bili': 'BILI',
+    'child_class': 'Child_Class',
+    'plat': 'PLAT',
+    'hb': 'HB',
+    'neutrophil': 'Neutrophil',
+    'lymphocyte': 'Lymphocyte',
+    'bun': 'BUN',
+    'cr': 'CR',
+    'bclc': 'BCLC',
+    'close_to_4': 'close_to_4',
 }
 
 class PatientData_Surv(BaseModel):
-    age: float | None = None
     sex: float | None = None
-    hb: float | None = None
-    bili: float | None = None
-    alb: float | None = None
-    alk_p: float | None = None
-    bun: float | None = None
-    bclc: float | None = None
-    cr: float | None = None
-    neutrophil: float | None = None
-    lymphocyte: float | None = None
-    afp: float | None = None
-    alt: float | None = None
-    hbsag: float | None = None
-    plat: float | None = None
-    wbc: float | None = None
-    child_class: float | None = None
-    ast: float | None = None
+    age: float | None = None
     height: float | None = None
     weight: float | None = None
-    hcv: float | None = None
-    tumor_size: float | None = None
+    afp: float | None = None
+    ast: float | None = None
+    alt: float | None = None
+    alb: float | None = None
+    alk_p: float | None = None
+    bili: float | None = None
+    child_class: float | None = None
+    plat: float | None = None
+    hb: float | None = None
+    neutrophil: float | None = None
+    lymphocyte: float | None = None
+    bun: float | None = None
+    cr: float | None = None
+    bclc: float | None = None
+    close_to_4: float | None = None
 
     def dict(self, *args, **kwargs):
         original_dict = super().dict(*args, **kwargs)

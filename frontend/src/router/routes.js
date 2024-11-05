@@ -4,9 +4,9 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'early_recurrence/result/case', component: () => import('pages/CaseResultPage_ER.vue') },
-      { path: 'overall_survival/result/case', component: () => import('pages/CaseResultPage_Surv.vue') }
+      { path: '', component: () => import('pages/CataloguePage.vue') },
+      { path: 'early_recurrence', component: () => import('pages/IndexPage_ER.vue') },
+      { path: 'overall_survival', component: () => import('pages/IndexPage_Surv.vue') }
     ]
   },
 
